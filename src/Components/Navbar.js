@@ -1,19 +1,19 @@
 // import { signOut } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
-// import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
-// import auth from '../../Firebase/firebase.init';
-// import '../../style/style.css'
+import auth from '../Firebase/firebase.init';
 
 const Navbar = ({ children }) => {
 
     const [dark, setDark] = useState(false)
-    // const [user] = useAuthState(auth)
-    // console.log(user);
+    const [user] = useAuthState(auth)
+    console.log(user);
 
-    // const handleSignOut = () => {
-    //     signOut(auth);
-    // };
+    const handleSignOut = () => {
+        signOut(auth);
+    };
 
     return (
         <div className="drawer drawer-end" data-theme={dark ? "dark" : "light"}>
@@ -69,20 +69,19 @@ const Navbar = ({ children }) => {
                             <Link to='/' className='type-1 menu-selection'>Calender</Link>
                             <Link to='/to-do' className='type-1 menu-selection'>To-Do</Link>
                             <Link to='/completed-tasks' className='type-1 menu-selection'>Completed Tasks</Link>
-                            {/* <Link to='/about'>About</Link> */}
 
-                            {/* {!user ? */}
+                            {!user ?
                                 <Link to='/signin' className='type-1 menu-selection'>Sign In</Link>
-                                {/* : */}
-                                {/* <button onClick={handleSignOut} className='type-1 menu-selection'>Sign Out</button> */}
-                            {/* } */}
+                                : 
+                                <button onClick={handleSignOut} className='type-1 menu-selection'>Sign Out</button>
+                             }
 
                         </ul>
                     </div>
                 </div>
 
                 {/* <!-- Page content here --> */}
-               <div className='mt-[64px] lg:mt-[80px] md:mt-[80px]'>
+               <div className=''>
                {children}
                </div>
 
@@ -101,12 +100,11 @@ const Navbar = ({ children }) => {
 
                     <Link to='/addblog' className='type-2 mobile-nav-menu-selection flex justify-center'>Create Blog</Link>
 
-                    {/* <Link to='/about'>About</Link> */}
-                    {/* {!user ? */}
+                    {!user ?
                         <Link to='/signin' className='type-2 mobile-nav-menu-selection flex justify-center'>Sign In</Link>
-                        {/* : */}
-                        {/* <button onClick={handleSignOut} className='type-2 mobile-nav-menu-selection flex justify-center'>Sign Out</button> */}
-                    {/* } */}
+                         : 
+                        <button onClick={handleSignOut} className='type-2 mobile-nav-menu-selection flex justify-center'>Sign Out</button> 
+                     } 
 
                 </ul>
 

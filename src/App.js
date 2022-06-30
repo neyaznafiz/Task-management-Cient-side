@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import useLoading from "./Hooks/useLoading";
 import Loading from "./Components/Shared/Loading";
 import style from './Style/style.css'
+import UpdateToDo from "./Pages/ToDo/UpdateToDo";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
                 {/* <Route path="/" element={<Calender></Calender>}></Route> */}
                 <Route path="/" element={<Calender></Calender>}></Route>
                 <Route path="/to-do" element={<ToDo></ToDo>}></Route>
+                <Route path="/to-do/:ID" element={<UpdateToDo></UpdateToDo>}></Route>
                 <Route path="/completed-tasks" element={<CompletedTasks></CompletedTasks>}></Route>
               </Route>
               <Route path="/signin" element={<SignIn></SignIn>}></Route>

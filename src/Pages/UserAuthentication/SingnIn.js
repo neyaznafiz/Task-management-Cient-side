@@ -21,7 +21,7 @@ function SignUp() {
 
     const navigate = useNavigate()
     const location = useLocation()
-    let from = location.state?.from?.pathname || "/"
+    let from = location.state?.from?.pathname || "/home"
 
 
     if (loading) {
@@ -117,7 +117,7 @@ function SignUp() {
 
 
                 <div className='flex justify-center my-7 md:my-14'>
-                    <p className='lg:pr-3 text-'> New here ? <Link to='/signup' className=''>SignUp</Link> </p>
+                    <p className='lg:pr-3 text-'> New here ? <Link to='/signup' className=''>Sign Up</Link> </p>
                 </div>
 
                 <SocialAuthentication />

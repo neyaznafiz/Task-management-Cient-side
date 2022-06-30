@@ -66,24 +66,28 @@ const Navbar = ({ children }) => {
 
                             </label>
 
-                            <Link to='/' className='type-1 menu-selection'>Calender</Link>
-                            <Link to='/to-do' className='type-1 menu-selection'>To-Do</Link>
-                            <Link to='/completed-tasks' className='type-1 menu-selection'>Completed Tasks</Link>
-
                             {!user ?
                                 <Link to='/signin' className='type-1 menu-selection'>Sign In</Link>
-                                : 
-                                <button onClick={handleSignOut} className='type-1 menu-selection'>Sign Out</button>
-                             }
+                                :
+                                <>
+                                    <Link to='/' className=''>Calender</Link>
+
+                                    <Link to='/to-do' className=''>To-Do</Link>
+
+                                    <Link to='/completed-tasks' className=''>Completed Tasks</Link>
+
+                                    <button onClick={handleSignOut} className=''>Sign Out</button>
+                                </>
+                            }
 
                         </ul>
                     </div>
                 </div>
 
                 {/* <!-- Page content here --> */}
-               <div className=''>
-               {children}
-               </div>
+                <div className=''>
+                    {children}
+                </div>
 
 
             </div>
@@ -94,22 +98,25 @@ const Navbar = ({ children }) => {
                 <ul className="menu p-4 mt-16 overflow-y-auto w-60 bg-black bg-opacity-90 text-white montserrat-alternates font-semibold tracking-wide">
 
                     {/* <!-- Sidebar content here --> */}
-                    <Link to='/' className='type-2 mobile-nav-menu-selection flex justify-center'>Home</Link>
-
-                    <Link to='/allblog' className='type-2 mobile-nav-menu-selection flex justify-center'>All Blogs</Link>
-
-                    <Link to='/addblog' className='type-2 mobile-nav-menu-selection flex justify-center'>Create Blog</Link>
-
                     {!user ?
-                        <Link to='/signin' className='type-2 mobile-nav-menu-selection flex justify-center'>Sign In</Link>
-                         : 
-                        <button onClick={handleSignOut} className='type-2 mobile-nav-menu-selection flex justify-center'>Sign Out</button> 
-                     } 
+                        <Link to='/signin' className=' flex justify-center'>Sign In</Link>
+                        :
+                        <>
+                            <Link to='/' className=' flex justify-center'>Home</Link>
+
+                            <Link to='/allblog' className=' flex justify-center'>All Blogs</Link>
+
+                            <Link to='/addblog' className=' flex justify-center'>Create Blog</Link>
+
+                            <button onClick={handleSignOut} className=' flex justify-center'>Sign Out</button>
+                        </>
+                    }
 
                 </ul>
 
 
             </div>
+            
         </div>
     );
 };

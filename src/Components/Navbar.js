@@ -99,18 +99,18 @@ const Navbar = ({ children }) => {
 
                     {/* <!-- Sidebar content here --> */}
                     {!user ?
-                        <Link to='/signin' className=' flex justify-center'>Sign In</Link>
-                        :
-                        <>
-                            <Link to='/' className=' flex justify-center'>Home</Link>
+                                <Link to='/signin' className='flex justify-center'>Sign In</Link>
+                                :
+                                <>
+                                    <Link to='/' className='flex justify-center'>Calender</Link>
 
-                            <Link to='/allblog' className=' flex justify-center'>All Blogs</Link>
+                                    <Link to='/to-do' className='flex justify-center'>To-Do</Link>
 
-                            <Link to='/addblog' className=' flex justify-center'>Create Blog</Link>
+                                    <Link to='/completed-tasks' className='flex justify-center'>Completed Tasks</Link>
 
-                            <button onClick={handleSignOut} className=' flex justify-center'>Sign Out</button>
-                        </>
-                    }
+                                    <button onClick={handleSignOut} className='flex justify-center'>Sign Out</button>
+                                </>
+                            }
 
                 </ul>
 

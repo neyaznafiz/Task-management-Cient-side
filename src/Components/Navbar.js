@@ -67,8 +67,8 @@ const Navbar = ({ children }) => {
                             </label>
 
                             <Link to='/' className='type-1 menu-selection'>Calender</Link>
-                            <Link to='/allblog' className='type-1 menu-selection'>To-Do</Link>
-                            <Link to='/addblog' className='type-1 menu-selection'>Completed Tasks</Link>
+                            <Link to='/to-do' className='type-1 menu-selection'>To-Do</Link>
+                            <Link to='/completed-tasks' className='type-1 menu-selection'>Completed Tasks</Link>
                             {/* <Link to='/about'>About</Link> */}
 
                             {/* {!user ? */}

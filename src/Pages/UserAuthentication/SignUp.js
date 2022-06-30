@@ -1,11 +1,11 @@
 import React from 'react'
 
-function ToDo() {
+function SignUp() {
     return (
         <div>
-            todo
+            
         </div>
     )
 }
 
-export default ToDo
+export default SignUp

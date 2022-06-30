@@ -107,7 +107,7 @@ function SignUp() {
                     </div>
 
                     <div className='flex justify-end w-[300px] md:w-[650px]'>
-                        <Link to='/signin/forgetpassword' className='lg:pl-4 text-center cursor-pointer link-selection type-3'>Forget Password</Link>
+                        <Link to='/sigin/forgetpassword' className='lg:pl-4 text-center cursor-pointer link-selection type-3'>Forget Password</Link>
                     </div>
 
                     <div className="flex justify-center mx-4 my-5 mb-lg-4">

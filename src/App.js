@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useLoading from "./Hooks/useLoading";
 import Loading from "./Components/Shared/Loading";
+import style from './Style/style.css'
 
 function App() {
 

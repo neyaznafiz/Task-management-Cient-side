@@ -25,15 +25,14 @@ function Calender() {
 
     const [date, setDate] = useState(new Date())
 
-
-
     return (
         <div>
             <div className=" ">
                 <div className="">
-                    <div className=''>
+                    <div className='m-6 md:m-16 p-5 w-80 shadow-2xl rounded-xl'>
                         <style>{css}</style>
                         <DayPicker
+                            className='flex justify-center items-center pt-5'
                             mode="single"
                             selected={date}
                             onSelect={setDate}
@@ -43,7 +42,7 @@ function Calender() {
                             }}
                         // footer={footer}
                         />
-                        <p>You have selected: {format(date, 'PPPP')}.</p>
+                        <p className='m-7 text-md font-semibold uppercase text-center'>{format(date, 'PPPP')}</p>
                     </div>
                 </div>
             </div>

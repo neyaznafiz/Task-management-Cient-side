@@ -24,11 +24,12 @@ const css = `
 function Calender() {
 
     const [date, setDate] = useState(new Date())
+    console.log(date)
 
     return (
         <div>
             <div className=" ">
-                <div className="">
+                <div className="flex">
                     <div className='m-6 md:m-16 p-5 w-80 shadow-2xl rounded-xl'>
                         <style>{css}</style>
                         <DayPicker
@@ -40,9 +41,12 @@ function Calender() {
                                 selected: 'my-selected',
                                 today: 'my-today'
                             }}
-                        // footer={footer}
                         />
                         <p className='m-7 text-md font-semibold uppercase text-center'>{format(date, 'PPPP')}</p>
+                    </div>
+
+                    <div>
+                        
                     </div>
                 </div>
             </div>

@@ -9,7 +9,10 @@ import { toast } from 'react-toastify';
 
 function DisplayToDo({ todo, handleDeleteToDo }) {
 
-    const { _id, email, date, title, content } = todo
+    const { _id, email, date, title, content, role } = todo
+    console.log(role);
+
+    const [done, setDone] = useState(false)
 
 
     // navigation for edit the ToDo
@@ -17,29 +20,28 @@ function DisplayToDo({ todo, handleDeleteToDo }) {
     const navigateToUpdate = id => {
         navigate(`${_id}`)
     }
-    
+
 
     // function for add completed role
     const addCompleted = () => {
-       
-            fetch(`http://localhost:5000/tasks/completed/${email}`, {
-                method: "PUT",
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+
+        fetch(`https://limitless-dawn-15387.herokuapp.com/tasks/completed/${email}`, {
+            method: "PUT",
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 403) {
+                    toast.error('Failed to add completed.')
+                }
+                return res.json()
+            })
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Successfully add completed')
                 }
             })
-                .then(res => {
-                    if (res.status === 403) {
-                        toast.error('Failed to add completed.')
-                    }
-                    return res.json()
-                })
-                .then(data => {
-                    if (data.modifiedCount > 0) {
-                        // refetch()
-                        toast.success('Successfully add completed')
-                    }
-                })
     }
 
     return (
@@ -59,7 +61,11 @@ function DisplayToDo({ todo, handleDeleteToDo }) {
                 <div className='pl-7 py-2 mt-8 flex items-center gap-x-5'>
                     <div class="flex gap-x-5">
 
-                        <input type="radio" name="radio-5" onClick={addCompleted} class="radio"  checked />
+                        {!role ?
+                            <input type="radio" name="radio-5" onClick={addCompleted} class="radio" />
+                            :
+                            <p className='font-semibold text-lg text-green-600'> ✔ Completed</p>
+                        }
 
                         <button onClick={() => handleDeleteToDo(_id)}><RiDeleteBinLine className='text-2xl' /></button>
                     </div>

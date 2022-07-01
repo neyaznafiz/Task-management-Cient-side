@@ -56,7 +56,7 @@ function ToDo() {
         <div className=''>
                 <div className='grid justify-center gap-y-4 py-16 px-6'>
                     {
-                        myToDo.map(todo => <DisplayToDo
+                        [...myToDo].reverse().map(todo => <DisplayToDo
                             key={todo._id}
                             todo={todo}
                             handleDeleteToDo={handleDeleteToDo}

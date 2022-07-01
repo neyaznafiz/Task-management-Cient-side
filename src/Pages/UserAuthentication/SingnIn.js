@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import Loading from '../../Components/Shared/Loading';
 import SocialAuthentication from './SocialAuthentication';
 import auth from '../../Firebase/firebase.init';
+import useToken from '../../Hooks/useToken';
 
 function SignUp() {
 
@@ -18,6 +19,7 @@ function SignUp() {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [token]=useToken(user)
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -28,6 +30,11 @@ function SignUp() {
         return <div className='flex justify-center items-center h-screen'><Loading /></div>
     }
 
+    if(token){
+        navigate(from, { replace: true });
+        toast.success('Congratulation ! You are successfuly SignIn')
+    }
+
     const handleSignIn = data => {
         if (error) {
             toast.error(<p>Error: {error?.message}</p>)
@@ -35,8 +42,6 @@ function SignUp() {
         else {
             console.log(data);
             signInWithEmailAndPassword(data.email, data.password)
-            navigate(from, { replace: true });
-            toast.success('Congratulation ! You are successfuly SignIn')
         }
     }
 

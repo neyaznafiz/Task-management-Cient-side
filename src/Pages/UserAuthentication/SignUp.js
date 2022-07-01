@@ -6,6 +6,7 @@ import auth from '../../Firebase/firebase.init'
 import { toast } from 'react-toastify';
 import SocialAuthentication from './SocialAuthentication';
 import Loading from '../../Components/Shared/Loading';
+import useToken from '../../Hooks/useToken';
 
 
 function SignUp() {
@@ -21,6 +22,7 @@ function SignUp() {
 
     const [sendEmailVerification, sending, emailVerificationError] = useSendEmailVerification(auth);
 
+    const [token]=useToken(user)
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -34,16 +36,20 @@ function SignUp() {
         return <div className='flex justify-center items-center h-screen'><Loading /></div>
     }
 
+
+    if(token){
+        navigate(from, { replace: true });
+        toast.success('Congratulation ! Your registration was successful')
+    }
+
     const handleSignUp = async data => {
         if (error) {
             toast.error(<p>Error: {error?.message}</p>)
         }
         else {
             await createUserWithEmailAndPassword(data.email, data.password)
-            navigate(from, { replace: true });
             await sendEmailVerification()
-            toast.success('Verification email send to {data.email}')
-            toast.success('Congratulation ! Your registration was successful')
+            toast.success('Verification email send to {data.email}') 
         }
     }
 

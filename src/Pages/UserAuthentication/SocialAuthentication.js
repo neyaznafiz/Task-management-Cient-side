@@ -5,10 +5,13 @@ import { DotLoader, HashLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import auth from '../../Firebase/firebase.init';
 import { FcGoogle } from 'react-icons/fc';
+import useToken from '../../Hooks/useToken';
 
 function SocialAuthentication() {
 
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+
+    const [token]=useToken(googleUser)
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -25,8 +28,9 @@ function SocialAuthentication() {
         </div>
     }
 
-    if (googleUser) {
+    if (token) {
         navigate(from, { replace: true })
+        toast.success('Congratulation ! You are successfuly SignIn')
     }
 
     return (

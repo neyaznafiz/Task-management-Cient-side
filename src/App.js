@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Calender from "./Pages/Calender";
-import CompletedTasks from "./Pages/CompletedTasks";
+import CompletedTasks from "./Pages/CompletedTask/CompletedTasks";
 import ToDo from "./Pages/ToDo/ToDo";
 import ResetPass from "./Pages/UserAuthentication/ResetPass";
 import SignUp from "./Pages/UserAuthentication/SignUp";

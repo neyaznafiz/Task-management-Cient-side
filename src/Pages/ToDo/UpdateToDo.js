@@ -14,7 +14,7 @@ function UpdateToDo() {
 
     useEffect(() => {
 
-        axios.get(`http://localhost:5000/todo-by-id/${ID}`)
+        axios.get(`https://limitless-dawn-15387.herokuapp.com/todo-by-id/${ID}`)
             .then(res => {
                 const { data } = res
                 setSingleToDo(data)
@@ -29,7 +29,7 @@ function UpdateToDo() {
             content: data.content
         }
 
-        // axios.put('http://localhost:5000/update-todo', toDoInputForUpdate)
+        // axios.put(`https://limitless-dawn-15387.herokuapp.com/update-todo/${ID}`, toDoInputForUpdate)
         //     .then(res => {
         //         const { data } = res
         //         if (data?.insertedId) {
@@ -41,7 +41,7 @@ function UpdateToDo() {
         //         }
         //     })
 
-        fetch('http://localhost:5000/update-todo', {
+        fetch(`https://limitless-dawn-15387.herokuapp.com/update-todo/${ID}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -54,10 +54,55 @@ function UpdateToDo() {
             })
     }
 
+
+    // const [ToDo, setToDo] = useState({});
+    // const [NewToDo, setNewToDo] = useState()
+    // const {date,description,hedLine,_id} = ToDo;
+  
+//     useEffect(() => {
+//       fetch(`https://limitless-dawn-15387.herokuapp.com/update/${ID}`)
+//         .then(res => res.json())
+//         .then(data =>{ 
+            
+//           setToDo(data) 
+//           setNewToDo(data.description)
+//       });
+//     }, []);
+  
+//     const handleToDoUpdate = event => {
+//       event.preventDefault()
+  
+//       const restock = event.target.restock.value
+  
+//       const updatedData =  restock + NewToDo
+//       setNewToDo(updatedData)
+//       const url = `https://limitless-dawn-15387.herokuapp.com/update-todo/${ID}`
+  
+//       fetch(url, {
+//           method: 'PUT',
+//           headers: {
+//               'content-type': 'application/json'
+//           },
+//           body: JSON.stringify({ updatedData })
+//       })
+//       .then(res => res.json())
+//       .then(data => {
+//           console.log(data);
+          
+//           // alert('quantity updatted')
+//       })
+//   event.target.reset()
+//   }
+
     return (
         <div>
             <div>
                 <div className='md:flex lg:flex justify-center'>
+
+                {/* <form onSubmit={handleToDoUpdate}>
+            <textarea className="w-24 py-3 mr-2 bg-slate-300"  type="text"  name='restock' placeholder='up date' required/>
+            <button className="btn">Added</button>
+            </form> */}
 
                     <form onSubmit={handleSubmit(handleUpdateToDo)} className=' shadow-2xl rounded-3xl rounded-lg md:m-20 lg:m-20 m-4 p-7 md:p-16'>
 

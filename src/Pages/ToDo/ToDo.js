@@ -16,7 +16,7 @@ function ToDo() {
     useEffect(() => {
         const myToDo = async () => {
             const email = user.email;
-            const url = `http://localhost:5000/my-added-to-do?email=${email}`;
+            const url = `https://limitless-dawn-15387.herokuapp.com/my-added-to-do?email=${email}`;
 
             try {
                 const { data } = await axios.get(url, {
@@ -40,7 +40,7 @@ function ToDo() {
     const handleDeleteToDo = (id) => {
         const proceed = window.confirm("Are you sure?");
         if (proceed) {
-            const url = `http://localhost:5000/delete-to-do/${id}`;
+            const url = `https://limitless-dawn-15387.herokuapp.com/delete-to-do/${id}`;
             fetch(url, {
                 method: "DELETE",
             })

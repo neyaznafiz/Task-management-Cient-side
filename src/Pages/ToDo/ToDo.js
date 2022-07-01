@@ -12,52 +12,54 @@ function ToDo() {
     const [user] = useAuthState(auth)
     const navigate = useNavigate();
 
-    // const [allTodo, setAllTodo] = useState([])
-    // console.log(allTodo);
-
-    // const {date, title, content} = allTodo
-
-    // useEffect(() => {
-    //     if (user) {
-    //         axios.get(`http://localhost:5000/alltodo`)
-    //             .then(res => {
-    //                 const { data } = res
-    //                 setAllTodo(data)
-    //             })
-    //     }
-    // }, [])
 
     useEffect(() => {
         const myToDo = async () => {
-          const email = user.email;
-          const url = `http://localhost:5000/my-added-to-do?email=${email}`;
-    
-          try {
-            const { data } = await axios.get(url, {
-              headers: {
-                authorization: ` Bearer ${localStorage.getItem("accessToken")}`,
-              },
-            });
-            setMyToDo(data);
-          } catch (error) {
-            console.log(error.message);
-            if (error.response.status === 401 || error.response.status === 403) {
-              signOut(auth);
-              navigate("/login");
+            const email = user.email;
+            const url = `http://localhost:5000/my-added-to-do?email=${email}`;
+
+            try {
+                const { data } = await axios.get(url, {
+                    headers: {
+                        authorization: ` Bearer ${localStorage.getItem("accessToken")}`,
+                    },
+                });
+                setMyToDo(data);
+            } catch (error) {
+                console.log(error.message);
+                if (error.response.status === 401 || error.response.status === 403) {
+                    signOut(auth);
+                    navigate("/login");
+                }
             }
-          }
         };
         myToDo();
-      }, [user]);
-  
+    }, [user]);
+
+
+    const handleDeleteToDo = (id) => {
+        const proceed = window.confirm("Are you sure?");
+        if (proceed) {
+            const url = `http://localhost:5000/delete-to-do/${id}`;
+            fetch(url, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    const remaining = myToDo.filter( toDo => toDo._id !== id )
+                    setMyToDo(remaining)
+                });
+        }
+    };
 
     return (
         <div className=''>
             <div className='grid justify-center gap-y-4 py-16 px-6'>
                 {
-                    myToDo.map(todo => <DisplayToDo 
-                    key={todo._id}
-                    todo={todo}
+                    myToDo.map(todo => <DisplayToDo
+                        key={todo._id}
+                        todo={todo}
+                        handleDeleteToDo={handleDeleteToDo}
                     />)
                 }
             </div>

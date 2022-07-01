@@ -13,6 +13,7 @@ import useLoading from "./Hooks/useLoading";
 import Loading from "./Components/Shared/Loading";
 import style from './Style/style.css'
 import UpdateToDo from "./Pages/ToDo/UpdateToDo";
+import Footer from "./Components/Shared/Footer";
 
 function App() {
 
@@ -40,9 +41,10 @@ function App() {
               <Route path="/signup" element={<SignUp></SignUp>}></Route>
             </Routes>
           </Navbar>
-            <div className="mt-16">
-              <ToastContainer />
-            </div>
+          <div className="mt-16">
+            <Footer></Footer>
+            <ToastContainer />
+          </div>
         </>
       }
     </div>

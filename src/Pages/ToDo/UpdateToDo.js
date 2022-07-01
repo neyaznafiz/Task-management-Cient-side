@@ -61,6 +61,8 @@ function UpdateToDo() {
 
                     <form onSubmit={handleSubmit(handleUpdateToDo)} className=' shadow-2xl rounded-3xl rounded-lg md:m-20 lg:m-20 m-4 p-7 md:p-16'>
 
+                        <p className='text-2xl mb-9 font-semibold border-b'>Update Your To-Do Here.</p>
+
 
                         <div className='w-full grid justify-center mb-4'>
                             <label className="flex items-end bg-inherit text-xl mb-2">Update the title here <span className='text-3xl pl-1'>⬎</span></label>

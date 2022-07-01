@@ -1,16 +1,44 @@
-import React from 'react'
-import { FaRegEdit, FaCheck } from 'react-icons/fa';
+import axios from 'axios';
+import React, { useState } from 'react'
+import { FaRegEdit } from 'react-icons/fa';
+import { RiDeleteBinLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
-function DisplayToDo({ todo }) {
+function DisplayToDo({ todo, handleDeleteToDo  }) {
 
     const {_id, date, title, content } = todo
+
+    const [done, setDone] = useState(false)
 
     const navigate = useNavigate()
     const navigateToUpdate = id => {
         navigate(`${_id}`)
     }
+
+    const handlePostToDo = data => {
+
+        // const toDoInput = {
+        //     email: user.email,
+        //     date: formatedDate,
+        //     title: data.title,
+        //     content: data.content
+        // }
+
+        axios.post('http://localhost:5000/post-todo', )
+            .then(res => {
+                const { data } = res
+                if (data?.insertedId) {
+                    toast.success('Your To-Do added successfully.')
+                    
+                }
+                else {
+                    toast.error('Faild to added your To-Do. Please try again.')
+                }
+            })
+    }
+
 
     return (
         <div className=''>
@@ -26,11 +54,12 @@ function DisplayToDo({ todo }) {
                     <p className=''>{content}</p>
                 </div>
 
-                <div className='pl-7 py-2 mt-8 flex gap-x-5'>
-                    <div class="form-control">
-                        <label class="label cursor-pointer">
-                            <input type="checkbox" checked="checked" class="checkbox" />
-                        </label>
+                <div className='pl-7 py-2 mt-8 flex items-center gap-x-5'>
+                    <div class="flex gap-x-5">
+                           <form className='mt-2'>
+                           <input onClick={() => setDone(!done)} type="checkbox" name="done" className='w-5 h-5 rounded-full' />
+                           </form>
+                            <button onClick={()=>handleDeleteToDo(_id)}><RiDeleteBinLine className='text-2xl'/></button>
                     </div>
                 </div>
 

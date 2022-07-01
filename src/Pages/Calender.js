@@ -118,7 +118,7 @@ function Calender() {
                                     </div>
 
                                     <div className="flex justify-center mb-5 md:my-2 mb-lg-2">
-                                        <button className='text-2xl bg-base-100 rounded-lg hover:bg-gray-500 p-2 hover:text-white'>Add ToDo</button>
+                                        <input type='submit' value='Add ToDo' className='text-2xl bg-base-100 rounded-lg hover:bg-gray-500 p-2 hover:text-white' />
                                     </div>
 
                                 </form>

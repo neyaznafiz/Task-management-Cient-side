@@ -9,9 +9,9 @@ import useToken from '../../Hooks/useToken';
 
 function SocialAuthentication() {
 
-    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, user, googleLoading, googleError] = useSignInWithGoogle(auth);
 
-    const [token]=useToken(googleUser)
+    const [token]=useToken(user)
 
     const navigate = useNavigate()
     const location = useLocation()

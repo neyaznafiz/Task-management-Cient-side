@@ -46,7 +46,7 @@ function ToDo() {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    const remaining = myToDo.filter( toDo => toDo._id !== id )
+                    const remaining = myToDo.filter(toDo => toDo._id !== id)
                     setMyToDo(remaining)
                 });
         }
@@ -54,15 +54,15 @@ function ToDo() {
 
     return (
         <div className=''>
-            <div className='grid justify-center gap-y-4 py-16 px-6'>
-                {
-                    myToDo.map(todo => <DisplayToDo
-                        key={todo._id}
-                        todo={todo}
-                        handleDeleteToDo={handleDeleteToDo}
-                    />)
-                }
-            </div>
+                <div className='grid justify-center gap-y-4 py-16 px-6'>
+                    {
+                        myToDo.map(todo => <DisplayToDo
+                            key={todo._id}
+                            todo={todo}
+                            handleDeleteToDo={handleDeleteToDo}
+                        />)
+                    }
+                </div>
 
         </div>
     )

@@ -44,12 +44,13 @@ function UpdateToDo() {
         fetch(`https://limitless-dawn-15387.herokuapp.com/update-todo/${ID}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: ` Bearer ${localStorage.getItem("accessToken")}`,
             },
             body: JSON.stringify(toDoInputForUpdate)
         })
             .then(res => res.json())
-            .then(data=>{
+            .then(data => {
                 toast.success('Your To-Do updated successfully.')
             })
     }
@@ -58,48 +59,51 @@ function UpdateToDo() {
     // const [ToDo, setToDo] = useState({});
     // const [NewToDo, setNewToDo] = useState()
     // const {date,description,hedLine,_id} = ToDo;
-  
-//     useEffect(() => {
-//       fetch(`https://limitless-dawn-15387.herokuapp.com/update/${ID}`)
-//         .then(res => res.json())
-//         .then(data =>{ 
-            
-//           setToDo(data) 
-//           setNewToDo(data.description)
-//       });
-//     }, []);
-  
-//     const handleToDoUpdate = event => {
-//       event.preventDefault()
-  
-//       const restock = event.target.restock.value
-  
-//       const updatedData =  restock + NewToDo
-//       setNewToDo(updatedData)
-//       const url = `https://limitless-dawn-15387.herokuapp.com/update-todo/${ID}`
-  
-//       fetch(url, {
-//           method: 'PUT',
-//           headers: {
-//               'content-type': 'application/json'
-//           },
-//           body: JSON.stringify({ updatedData })
-//       })
-//       .then(res => res.json())
-//       .then(data => {
-//           console.log(data);
-          
-//           // alert('quantity updatted')
-//       })
-//   event.target.reset()
-//   }
+
+    //     useEffect(() => {
+    //       fetch(`https://limitless-dawn-15387.herokuapp.com/update/${ID}`)
+    //         .then(res => res.json())
+    //         .then(data =>{ 
+
+    //           setToDo(data) 
+    //           setNewToDo(data.description)
+    //       });
+    //     }, []);
+
+    //     const handleToDoUpdate = event => {
+    //       event.preventDefault()
+
+    //       const reTodo = {
+    //           event.target.title.value
+    //           event.target.content.value
+    //       }
+
+    //       const updatedData =  resTodo + NewToDo
+    //       setNewToDo(updatedData)
+    //       const url = `https://limitless-dawn-15387.herokuapp.com/update-todo/${ID}`
+
+    //       fetch(url, {
+    //           method: 'PUT',
+    //           headers: {
+    //               'content-type': 'application/json'
+    //           },
+    //           body: JSON.stringify({ updatedData })
+    //       })
+    //       .then(res => res.json())
+    //       .then(data => {
+    //           console.log(data);
+
+    //           // alert('quantity updatted')
+    //       })
+    //   event.target.reset()
+    //   }
 
     return (
         <div>
             <div>
                 <div className='md:flex lg:flex justify-center'>
 
-                {/* <form onSubmit={handleToDoUpdate}>
+                    {/* <form onSubmit={handleToDoUpdate}>
             <textarea className="w-24 py-3 mr-2 bg-slate-300"  type="text"  name='restock' placeholder='up date' required/>
             <button className="btn">Added</button>
             </form> */}

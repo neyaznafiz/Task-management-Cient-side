@@ -9,7 +9,7 @@ const Navbar = ({ children }) => {
 
     const [dark, setDark] = useState(false)
     const [user] = useAuthState(auth)
-    console.log(user);
+    // console.log(user);
 
     const handleSignOut = () => {
         signOut(auth);

@@ -38,26 +38,29 @@ function Calender() {
 
     const formatedDate = format(date, 'PPPP')
 
-    const handlePostToDo = data => {
+    const handlePostToDo = (data, e) => {
+        // e.preventDefault()
+        // if (e.code === "Enter" && !e.shiftKey) {
 
-        const toDoInput = {
-            email: user.email,
-            date: formatedDate,
-            title: data.title,
-            content: data.content
-        }
+            const toDoInput = {
+                email: user.email,
+                date: formatedDate,
+                title: data.title,
+                content: data.content
+            }
 
-        axios.post('https://limitless-dawn-15387.herokuapp.com/post-todo', toDoInput)
-            .then(res => {
-                const { data } = res
-                if (data?.insertedId) {
-                    toast.success('Your To-Do added successfully.')
-                    reset()
-                }
-                else {
-                    toast.error('Faild to added your To-Do. Please try again.')
-                }
-            })
+            axios.post('https://limitless-dawn-15387.herokuapp.com/post-todo', toDoInput)
+                .then(res => {
+                    const { data } = res
+                    if (data?.insertedId) {
+                        toast.success('Your To-Do added successfully.')
+                        reset()
+                    }
+                    else {
+                        toast.error('Faild to added your To-Do. Please try again.')
+                    }
+                })
+        // }
     }
 
 

@@ -55,6 +55,7 @@ function ToDo() {
     return (
         <div className=''>
                 <div className='grid justify-center gap-y-4 py-16 px-6'>
+                <p className='text-xl lg:text-3xl md:text-3xl font-semibold py-3'> Here is your added To-Do</p>
                     {
                         [...myToDo].reverse().map(todo => <DisplayToDo
                             key={todo._id}

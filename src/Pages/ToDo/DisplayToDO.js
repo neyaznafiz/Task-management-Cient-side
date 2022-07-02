@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { format } from 'date-fns';
+import { reload } from 'firebase/auth';
 import React, { useEffect, useState } from 'react'
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBinLine } from 'react-icons/ri';
@@ -9,10 +10,8 @@ import { toast } from 'react-toastify';
 
 function DisplayToDo({ todo, handleDeleteToDo }) {
 
-    const { _id, email, date, title, content, role } = todo
-    console.log(role);
-
-    const [done, setDone] = useState(false)
+    const { _id, email, date, title, content, } = todo
+    console.log(todo?.role);
 
 
     // navigation for edit the ToDo
@@ -39,6 +38,7 @@ function DisplayToDo({ todo, handleDeleteToDo }) {
             })
             .then(data => {
                 if (data.modifiedCount > 0) {
+                    
                     toast.success('Successfully add completed')
                 }
             })
@@ -61,7 +61,7 @@ function DisplayToDo({ todo, handleDeleteToDo }) {
                 <div className='pl-7 py-2 mt-8 flex items-center gap-x-5'>
                     <div class="flex gap-x-5">
 
-                        {!role ?
+                        {!todo?.role ?
                             <input type="radio" name="radio-5" onClick={addCompleted} class="radio" />
                             :
                             <p className='font-semibold text-lg text-green-600'> ✔ Completed</p>

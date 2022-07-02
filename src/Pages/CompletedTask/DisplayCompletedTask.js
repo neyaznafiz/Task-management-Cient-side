@@ -1,11 +1,13 @@
 import React from 'react'
+import { RiDeleteBinLine } from 'react-icons/ri';
 
-function DisplayCompletedTask({ tasks }) {
+function DisplayCompletedTask({ tasks, handleDeleteCompletedTasks }) {
 
-    const { date, title, content } = tasks
+    const {_id, date, title, content, role } = tasks
 
     return (
         <div>
+            {role &&
             <div className='border-2 lg:border-4 md:border-4  rounded-xl lg:w-[900px] md:w-[700px] p-6'>
 
                 <p className='font-bold tracking-wider text-lg pb-5'>{date }</p>
@@ -18,11 +20,12 @@ function DisplayCompletedTask({ tasks }) {
                 <div className='pl-7 py-2 mt-8 flex items-center gap-x-5'>
                     <div class="flex gap-x-5">
 
-                        {/* <button onClick={() => handleDeleteToDo(_id)}><RiDeleteBinLine className='text-2xl' /></button> */}
+                        <button onClick={() => handleDeleteCompletedTasks(_id)}><RiDeleteBinLine className='text-2xl' /></button>
                     </div>
                 </div>
 
             </div>
+}
         </div>
     )
 }

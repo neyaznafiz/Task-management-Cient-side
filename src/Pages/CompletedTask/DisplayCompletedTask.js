@@ -18,7 +18,7 @@ function DisplayCompletedTask({ tasks, handleDeleteCompletedTasks }) {
                 </div>
 
                 <div className='pl-7 py-2 mt-8 flex items-center gap-x-5'>
-                    <div class="flex gap-x-5">
+                    <div className="flex gap-x-5">
 
                         <button onClick={() => handleDeleteCompletedTasks(_id)}><RiDeleteBinLine className='text-2xl' /></button>
                     </div>

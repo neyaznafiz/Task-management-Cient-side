@@ -59,10 +59,10 @@ function DisplayToDo({ todo, handleDeleteToDo }) {
                 </div>
 
                 <div className='pl-7 py-2 mt-8 flex items-center gap-x-5'>
-                    <div class="flex gap-x-5">
+                    <div className="flex gap-x-5">
 
                         {!todo?.role ?
-                            <input type="radio" name="radio-5" onClick={addCompleted} class="radio" />
+                            <input type="radio" name="radio-5" onClick={addCompleted} className="radio" />
                             :
                             <p className='font-semibold text-lg text-green-600'> ✔ Completed</p>
                         }
